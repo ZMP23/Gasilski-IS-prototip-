@@ -1,0 +1,37 @@
+body {
+    background: rgb(0, 100, 140);
+    color: white;
+    font-family: "Audiowide", cursive;
+}
+
+.podlagaZaGumbeMP {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gumbiMP {
+    gap: 20px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-family: "Audiowide", cursive;
+    color: white;
+    background: #0082b4;
+    padding: 10px 0;
+    font-size: 1.5em;
+    flex: 1;
+    margin: 10px;
+}
+
+.gumbiMP:hover {
+    background-color: rgb(0, 160, 220);
+}
+
+#gumbiMPodjava {
+    background: #AA0A0A;
+}
+
+#gumbiMPodjava:hover {
+    background: rgb(200, 30, 30);
+}

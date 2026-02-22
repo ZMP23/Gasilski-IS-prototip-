@@ -1,0 +1,354 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(0, 100, 140);
+}
+
+.podlaga_za_status {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.status_forme {
+    background-color: #9dd58c;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: rgb(43, 103, 43);
+    font-size: 1em;
+    font-family: "Audiowide", cursive;
+    user-select: none;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.gumbZapriStatus {
+    color:rgb(43, 103, 43);
+}
+
+.gumbZapriStatus:hover {
+    color: rgb(40, 138, 40);
+    cursor: pointer;
+}
+
+.navigacija {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #ccc;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.navigacija li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigacija li:not(.aktivni) {
+    padding: 10px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.navigacija li:not(.aktivni) a {
+    color: #0082b4;
+    text-decoration: none;
+    font-family: cursive;
+}
+
+.navigacija li:hover:not(.aktivni) {
+    background-color: #c3c3c3;
+}
+
+.navigacija li:hover:not(.aktivni) a {
+    color: #005f80;
+}
+
+.aktivni {
+    background: #0082b4;
+    padding: 10px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.aktivni a {
+    color: #ccc;
+    text-decoration: none;
+    font-family: cursive;
+}
+
+.aktivni:hover {
+    background-color: #005f80;
+}
+
+.aktivni:hover a {
+    color: #c3c3c3;
+}
+
+.podlaga_ime_priimek {
+    margin: 15px 20px 0 20px;
+    text-align: right;
+}
+
+.imePriimek {
+    color:white;
+    font-family: "Audiowide", cursive;
+    font-size: 1em;
+    user-select: none;
+}
+
+.podlaga {
+    padding: 10px 50px 10px 50px;
+    margin: 5px 20px 20px 20px; 
+    box-sizing: border-box;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.podlaga_za_dodajanje {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0000005e;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.podlaga_za_urejanje {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0000005e;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.podlaga_za_dodajanje_clana {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0000005e;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    display: none;
+}
+
+.dodajanje {
+    padding: 10px 5px;
+    background: #ccc;
+    color: rgb(115, 35, 115);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dodajanjeClana {
+    padding: 10px 5px;
+    background: #ccc;
+    color: rgb(115, 35, 115);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.podatek {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 1em;
+}
+
+.podatek div {
+    display: flex;
+    align-items: center;
+}
+
+.podatek span {
+    user-select: none;
+    margin-left: 5px;
+}
+
+.niptb {
+    color: transparent;
+}
+
+.ptb {
+    color: #AA0A0A;
+}
+
+hr {
+    border-top: 1px solid #8d8d8d;
+    background: #8d8d8d;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input {
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 2px;
+    background-color: whitesmoke;
+    outline: none;
+}
+
+input[type=text]:focus {
+  background-color: rgb(212, 218, 247);
+}
+
+input[type=email]:focus {
+  background-color: rgb(212, 218, 247);
+}
+
+input[type=password]:focus {
+  background-color: rgb(212, 218, 247);
+}
+
+.gumbDodajDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+}
+
+.gumbDodaj {
+    color: white;
+    background: #0082b4;
+    cursor: pointer;
+    font-family: "Audiowide", cursive;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 2vh;
+}
+
+.gumbShraniSpremembe {
+    color: white;
+    background: rgb(11, 136, 11);
+    cursor: pointer;
+    font-family: "Audiowide", cursive;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 2vh;
+}
+
+.gumbShraniSpremembe:hover {
+    background: rgb(9, 108, 9);
+}
+
+.gumbDodaj:hover {
+    background: rgb(0, 100, 140);
+}
+
+.gumbDodajClana {
+    color: white;
+    background: #d4c300;
+    cursor: pointer;
+    font-family: "Audiowide", cursive;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 2vh;
+}
+
+.gumbDodajClana:hover {
+    background: #a49600;
+}
+
+.gumbPreklicDiv {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 2em;
+}
+
+.gumbPreklic {
+    color:#AA0A0A;
+    background: transparent;
+    text-decoration: none;
+    padding: none;
+}
+
+.gumbPreklic:hover {
+    color: rgb(200, 30, 30);
+}
+
+h1 {
+    margin: 20px;
+}
+
+.gumbIzbrisi, .gumbUredi {
+    text-decoration: none;
+    color: #0082b4;
+}
+
+.gumbDodajUC {
+    padding: 8px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.4vw;
+}
+
+#gumbDodajU, #gumbDodajOZ, #gumbDodajFun, #gumbDodajKO, #gumbDodajDS, #gumbDodajOds, #gumbDodajPrer {
+    background: #0082b4;
+}
+
+#gumbDodajC {
+    background: #d4c300;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    font-size: 1vw;
+    text-align: center;
+}
+
+
+.gumbIzbrisi {
+    color: #AA0A0A;
+    margin-left: 5px;
+}

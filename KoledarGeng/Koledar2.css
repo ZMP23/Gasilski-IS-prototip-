@@ -1,0 +1,608 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.stranskaNavigacija {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background: #ccc;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s ease;
+}
+
+.stranskaNavigacija a, .stranskaNavigacija p {
+    padding: 5px 10px;
+    font-size: 25px;
+    font-family: cursive;
+    text-decoration: none;
+    color: #0082b4;
+    display: block;
+    transition: 0.3s;
+}
+
+.stranskaNavigacija a:hover {
+    color: #005f80;
+    background-color: #c3c3c3;
+}
+
+.stranskaNavigacija label {
+    padding: 5px 10px;
+    font-size: 15px;
+    font-family: cursive;
+    text-decoration: none;
+    color: rgb(60, 60, 60);
+    display: block;
+    transition: 0.3s;
+}
+
+.stranskaNavigacija .gumbZapri {
+    color: rgb(172, 50, 172);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width:40;
+    border-radius: 50%;
+    font-size: 40px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+} 
+
+.stranskaNavigacija .gumbZapri:hover {
+    color: rgb(115, 35, 115);
+    background-color: #c3c3c3;
+}
+
+.vsebina{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  transition: margin-left 0.5s ease;
+}
+
+.podlaga{
+    flex: 1 1 auto;
+    display: grid;
+    background: rgb(0, 100, 140);
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    overflow: hidden;
+    min-width: 800px;
+    }
+
+.podlaga header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    padding: 1vh;
+}
+
+header .drugiPodatki{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1vh;
+}
+
+header .nadzorMeseca{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+header .opcije {
+    color:white;
+    font-family: "Audiowide", cursive;
+    font-size: 1em;
+    cursor: pointer;
+    user-select: none;
+}
+
+#navSimbol:hover{
+    color: aqua;
+}
+
+header .mesec{
+    user-select: none;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.5em;
+    font-family: "Audiowide", cursive;
+    color: white;
+}
+
+header .simboli{
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5em;
+    height: 1.2em;
+    width: 1.2em;
+    line-height: 1.2em;
+    font-family: "Audiowide", cursive;
+    color: white;
+    border-radius: 50%;
+}
+
+header .simboli:hover{
+    background: #0082b4;
+}
+
+
+.drugiPodatki{
+    font-family: "Audiowide", cursive;
+    color: white;
+    font-size: 1em;
+}
+
+.koledar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.dnevi_imena_vrstica{
+    background: rgb(0, 100, 140);
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    width: 100%;
+    min-width: inherit;
+}
+
+.dnevi_imena{
+    color: white;
+    font-size: 1.25em;
+    font-family: "Audiowide", cursive;
+    text-align: center;
+    padding: 1vh;
+    border-bottom: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dnevi_imena:nth-child(7n){
+    border-right: none;
+}
+
+.dnevi{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(var(--num-rows, 5), 1fr);
+    gap: 0;
+    width: 100%;
+    flex: 1;
+    border-collapse: collapse;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width: inherit;
+}
+
+.dan{
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.prazno_mesto{
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 110px;
+    background: transparent;
+    flex: 1 1 0;
+}
+
+.dan.dan:nth-child(1n) {
+    border-left: none;
+}
+
+.dan:nth-child(7n){
+    border-right: none;
+}
+
+.dan:nth-last-child(-n+7) {
+    border-bottom: none;
+}
+
+.dan_stevilka{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Audiowide", cursive;
+    color: white;
+    background:#0082b4;
+    padding: 0.2vh; 
+    overflow: hidden;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    border-bottom: 1px solid #ccc;
+}
+
+.neaktivni_dan_stevilka{
+    background: grey;
+    color: rgb(75, 75, 75);
+}
+
+
+.izmena{
+    background: transparent;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    min-width: 45px;
+}
+
+.izmena_stevilka{
+    display: flex;
+    height: 18px;
+    width: 18px;
+    font-family: "Audiowide", cursive;
+    font-size: 0.75em;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.dnevna_izmena_stevilka{
+    background: whitesmoke;
+}
+
+.nocna_izmena_stevilka{
+    background: #2E2E2E;
+}
+
+#izmena1dan {
+    background: #6B8FBF;
+}
+
+#izmena2dan {
+    background: #B37A7A;
+}
+
+#izmena3dan {
+    background: #7FAE9A;
+}
+
+#izmena4dan {
+    background: #9A8FBF;
+}
+
+#izmena1noc {
+    color: #6B8FBF;
+}
+
+#izmena2noc {
+    color: #B37A7A;
+}
+
+#izmena3noc {
+    color: #7FAE9A;
+}
+
+#izmena4noc {
+    color: #9A8FBF;
+}
+
+.dan_info{
+    background: white;
+    flex: 1;
+    font-size: 0.7em;
+    overflow: visible;
+    min-height: 50px;
+    min-width: 0;
+    overflow-wrap: break-word;
+    padding: 3px;
+}
+
+.info_dnevna_sluzba {
+    display: none;
+    background: #ccc;
+    color: #2E2E2E;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+
+.info_dnevna_izmena {
+    display: none;
+    color: #2E2E2E;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+
+.info_dnevna_izmena1 {
+    background: #6B8FBF;
+}
+
+.info_dnevna_izmena2 {
+    background-color: #B37A7A;
+}
+
+.info_dnevna_izmena3 {
+    background: #7FAE9A;
+}
+
+.info_dnevna_izmena4 {
+    background-color: #9A8FBF;
+}
+
+.info_nocna_izmena {
+    display: none;
+    background: #2E2E2E;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.info_nocna_izmena1 {
+    color: #6B8FBF;
+}
+
+.info_nocna_izmena2 {
+    color: #B37A7A;
+}
+
+.info_nocna_izmena3 {
+    color: #7FAE9A;
+}
+
+.info_nocna_izmena4 {
+    color: #9A8FBF;
+}
+
+.napis_oznake {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2em;
+    padding: 2px 5px;
+    color: whitesmoke;
+}
+
+.napis_oznake_dnslu {
+    color: #2E2E2E;
+}
+
+.posamezni_napis_z_gumbom {
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5px;
+}
+
+.posamezni_napis_z_gumbom_DN-SLU_dan {
+    background: #ccc;
+}
+
+.posamezni_napis_z_gumbom_IZM1_dan {
+    background: #6B8FBF;
+}
+
+.posamezni_napis_z_gumbom_IZM2_dan {
+    background: #B37A7A;
+}
+
+.posamezni_napis_z_gumbom_IZM3_dan {
+    background: #7FAE9A;
+}
+
+.posamezni_napis_z_gumbom_IZM4_dan {
+    background: #9A8FBF;
+}
+
+.posamezni_napis_z_gumbom_DN-SLU_noc {
+    background: #ccc;
+}
+
+.posamezni_napis_z_gumbom_IZM1_noc {
+    color: #6B8FBF;
+    background: #2E2E2E;
+}
+
+.posamezni_napis_z_gumbom_IZM2_noc {
+    color: #B37A7A;
+    background: #2E2E2E;
+}
+
+.posamezni_napis_z_gumbom_IZM3_noc {
+    color: #7FAE9A;
+    background: #2E2E2E;
+}
+
+.posamezni_napis_z_gumbom_IZM4_noc {
+    color:  #9A8FBF;
+    background: #2E2E2E;
+}
+
+.gumb_stanja {
+    height: 0.8em;
+    width: 0.8em;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+#gumb_stanja_pot {
+    background: rgb(0, 160, 0);
+}
+
+#gumb_stanja_nep {
+    background: whitesmoke;
+}
+
+#gumb_stanja_zav {
+    background: rgb(200, 0, 0);
+}
+
+.podlaga_za_izbirnik {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0000005e;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.izbirnik {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+.izbira {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    height: 30px;
+    cursor: pointer;
+    border-bottom: 2px solid black;
+}
+
+.obravnava {
+    border-bottom: 2px solid black;
+    color: rgb(172, 50, 172);
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.obrPodatki {
+    font-family: cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.izbira label {
+    font-family: "Audiowide", cursive;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+#potrditev {
+    background: rgb(0, 160, 0);
+    color:white;
+}
+
+#zavrnitev {
+    background: rgb(200, 0, 0);
+    color:white;
+}
+
+#nepotrditev {
+    background: whitesmoke;
+    color:black;
+}
+
+.izbira input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.izbira input[type="radio"]::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #0082b4;
+    display: none;
+}
+
+.izbira input[type="radio"]:checked::after {
+    display: block;
+}
+
+.podlaga_za_gumba_shrani {
+    height: 30px;
+    display: flex;
+}
+
+.gumba_za_stanje {
+    font-family: "Audiowide", cursive;
+    color: white;
+    background: #0082b4;
+    flex: 1;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.gumba_za_stanje:hover {
+    background: #005f80;
+}
+
+#shraniGumb {
+    border-right: 2px solid black;
+}
+
+.aktivni{
+    background: rgb(172, 50, 172);
+}
+
+.neaktivni .dan_stevilka, .neaktivni .dan_info{
+    background: white;
+    border: none;
+    color: white;
+}
+
+.dnevi::-webkit-scrollbar {
+    width: 12px;
+}
+
+.dnevi::-webkit-scrollbar-thumb {
+    background: #0082b4;
+    border: 3px solid transparent;
+    border-radius: 20px;
+    background-clip: padding-box;
+}
+
+.dnevi::-webkit-scrollbar-thumb:hover {
+    background: #005f80;
+    border: 3px solid #ccc;
+}
+
+.dnevi::-webkit-scrollbar-track {
+    background: #ccc;
+}
