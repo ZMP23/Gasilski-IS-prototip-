@@ -134,6 +134,17 @@ $rezultatDS = $mysqli->query($sqlDS);
             document.getElementById("podlagaZaDodajanje").style.display = "flex";
         };
 
+        function zapriUrejanje() {
+            document.getElementById("podlagaZaUrejanje").style.display = "none";
+        };
+
+        function odpriUrejanje(koda, ime) {
+            document.getElementById("u_kodaDS").value = koda;
+            document.getElementById("u_imeDS").value = ime;
+
+            document.getElementById("podlagaZaUrejanje").style.display = "flex";
+        };
+
         function zapriStatus() {
             document.getElementById("statusForme").style.display = "none";
         };

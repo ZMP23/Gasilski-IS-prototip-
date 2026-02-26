@@ -157,23 +157,25 @@ body {
 .dodajanje {
     padding: 10px 5px;
     background: #ccc;
-    color: rgb(115, 35, 115);
+    color: #005f80;
     font-weight: bold;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 10px black;
 }
 
 .dodajanjeClana {
     padding: 10px 5px;
     background: #ccc;
-    color: rgb(115, 35, 115);
+    color: #005f80;
     font-weight: bold;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 10px black;
 }
 
 .podatek {

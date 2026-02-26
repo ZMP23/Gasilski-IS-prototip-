@@ -58,10 +58,9 @@ if ($rezultatPRER->num_rows > 0) {
     while($prerazporeditev = $rezultatPRER->fetch_assoc()) {
         $datumPrerOds = (new DateTime($prerazporeditev["Prer_dat_ods"]))->format('Y-m-d'); 
         
-        // 1. CHECK FOR MISSING DATA
-        $isIncomplete = empty($prerazporeditev["Prer_dat_del"]) || 
+        $nepopolniPodatki = empty($prerazporeditev["Prer_dat_del"]) || 
                         empty($prerazporeditev["KO_koda_DEL"]) || 
-                        empty($prerazporeditev["DS_koda_DEL"]); // Using DS_koda_DEL as per your SQL query
+                        empty($prerazporeditev["DS_koda_DEL"]); 
 
         $prerPodatkiOds = [
             'id' => $prerazporeditev['Prer_id'],
@@ -73,7 +72,7 @@ if ($rezultatPRER->num_rows > 0) {
             'opombe' => $prerazporeditev['Prer_dod_op'],
             'koledarskaOznaka' => $prerazporeditev['KO_koda_ODS'],
             'delovnaSkupina' => $prerazporeditev['DS_koda'],
-            'neupopolnjeno' => $isIncomplete // <-- 2. PASS FLAG TO JS
+            'nepopolno' => $nepopolniPodatki
         ];
 
         if (!isset($prerDneviOds[$datumPrerOds])) {
@@ -81,8 +80,7 @@ if ($rezultatPRER->num_rows > 0) {
         }
         $prerDneviOds[$datumPrerOds][] = $prerPodatkiOds;
 
-        // 3. ONLY PROCESS THE 'DEL' DATE IF DATA IS COMPLETE
-        if (!$isIncomplete) {
+        if (!$nepopolniPodatki) {
             $datumPrerDel = (new DateTime($prerazporeditev["Prer_dat_del"]))->format('Y-m-d'); 
             
             $prerPodatkiDel = [
@@ -131,6 +129,7 @@ echo "<script>let prerDneviDel = " . json_encode($prerDneviDel) . ";</script>";
     <div class="stranskaNavigacija" id="stranskaNavigacijaKoledar">
         <a href="javascript:void(0)" class="gumbZapri" onclick="zapriNav()">&times;</a>
         <a href="index.php">Nazaj</a>
+        <a href="ObdelavaPodatkov.php">Baza podatkov</a>
         <p>Prikaži:</p>
         <form action="prikaziDelovneSkupine.php" method="post" id="priDelSku" novalidate>
             <div class="filtri">
@@ -175,7 +174,7 @@ echo "<script>let prerDneviDel = " . json_encode($prerDneviDel) . ";</script>";
             <header>
                 <div class="drugiPodatki">
                     <span class="opcije" onclick="odpriNav()" id="navSimbol"><i class="fa-solid fa-bars"></i></span>
-                    <span class="opcije"><?= htmlspecialchars($zaposleni["Zap_ime"]) ?> <?= htmlspecialchars($zaposleni["Zap_priimek"]) ?></span>
+                    <span class="opcije" id="imePriimek"><?= htmlspecialchars($zaposleni["Zap_ime"]) ?> <?= htmlspecialchars($zaposleni["Zap_priimek"]) ?></span>
                 </div>
                 <div class ="nadzorMeseca">
                     <span id="prej" class="simboli">&#10094;</span>

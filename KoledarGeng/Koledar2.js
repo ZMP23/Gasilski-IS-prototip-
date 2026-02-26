@@ -90,7 +90,7 @@ function dodajOdsotnostVkoledar (razlog, razlogNaziv, imePriimek, stanje, id, da
     obdelovaniDiv.style.display = 'block';
 };
 
-function dodajPrerazporeditevVkoledar (razlog, razlogNaziv, imePriimek, stanje, id, datumStr, obdelovaniDiv, delSkp, cssPripona, neupopolnjeno) {
+function dodajPrerazporeditevVkoledar (razlog, razlogNaziv, imePriimek, stanje, id, datumStr, obdelovaniDiv, delSkp, cssPripona, nepopolno) {
     let posamezniNapisZgumbomDiv = document.createElement("div");
     posamezniNapisZgumbomDiv.classList.add("posamezni_napis_z_gumbom", `posamezni_napis_z_gumbom_${delSkp}_${cssPripona}`);
     
@@ -102,8 +102,7 @@ function dodajPrerazporeditevVkoledar (razlog, razlogNaziv, imePriimek, stanje, 
     napis.innerHTML = `${imePriimek}: ${razlog}`;
     napis.title = `${razlogNaziv}`;
     
-    // --> NEW: Visual styling for incomplete entries
-    if (neupopolnjeno) {
+    if (nepopolno) {
         napis.style.color = "red";
     }
 
@@ -135,11 +134,9 @@ const uprKoledar = () => {
 
     const aktivniFiltri = Array.from(document.querySelectorAll(".filterMoznost:checked")).map(el => el.value);
 
-    // Total cells in calendar grid
     const stVsehCelic = prviDanMeseca + zadnjiDatumMeseca + (zadnjiDanMeseca === 0 ? 0 : 7 - zadnjiDanMeseca);
     const tedniMeseca = Math.ceil(stVsehCelic / 7);
 
-    // Set CSS variable for number of rows
     vsiDneviDiv.style.setProperty('--num-rows', tedniMeseca);
 
     vsiDneviDiv.innerHTML =  "";
@@ -272,7 +269,7 @@ const uprKoledar = () => {
 
                 if (vnos.razlog === 'PRER-ODS' || vnos.razlog === 'PRER-DEL') {
                     let cssPripona = vnos.koledarskaOznaka === 'NO-IZM' ? "noc" : "dan";
-                    dodajPrerazporeditevVkoledar(vnos.razlog, vnos.razlogNaziv, vnos.imePriimek, vnos.stanje, vnos.id, datumStr, targetDiv, vnos.delovnaSkupina, cssPripona, vnos.neupopolnjeno);
+                    dodajPrerazporeditevVkoledar(vnos.razlog, vnos.razlogNaziv, vnos.imePriimek, vnos.stanje, vnos.id, datumStr, targetDiv, vnos.delovnaSkupina, cssPripona, vnos.nepopolno);
                 } else {
                     dodajOdsotnostVkoledar(vnos.razlog, vnos.razlogNaziv, vnos.imePriimek, vnos.stanje, vnos.id, datumStr, targetDiv);
                 }

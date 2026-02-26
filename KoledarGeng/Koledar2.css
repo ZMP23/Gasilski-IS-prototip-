@@ -112,12 +112,12 @@ header .opcije {
     color:white;
     font-family: "Audiowide", cursive;
     font-size: 1em;
-    cursor: pointer;
     user-select: none;
 }
 
 #navSimbol:hover{
     color: aqua;
+    cursor: pointer;
 }
 
 header .mesec{
